@@ -5,7 +5,7 @@
     - if title?
       ac:parameter ac:name="title" #{title}
     ac:plain-text-body
-      <![CDATA[#{content}]]>
+      <![CDATA[#{unwrap_spans content}]]>
 - else
   ac:structured-macro ac:name="noformat"
     - if title?

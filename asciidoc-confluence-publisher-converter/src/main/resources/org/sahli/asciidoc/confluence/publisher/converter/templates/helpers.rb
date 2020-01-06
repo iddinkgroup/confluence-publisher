@@ -178,4 +178,13 @@ module Slim::Helpers
     end
   end
 
+  def unwrap_spans(text)
+    # Loop to unwrap nested spans. Constrain the maximum nesting depth as a safe guard for avoiding an endless loop.
+    depth = 100
+    while (text.include? "</span>") && (depth -= 1) >= 0
+      text = text.gsub(/<span class="[^"]*?">(.*?)<\/span>/m, '\1')
+    end
+    text
+  end
+
 end
